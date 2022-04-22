@@ -1,21 +1,26 @@
-#include "LinkedList.h"
+#include "LinkedList.hpp"
 #include <iostream>
 
-LinkedList::LinkedList() : head(NULL) {}
+template<typename T>
+LinkedList<T>::LinkedList() : head(NULL) {}
 
-LinkedList::LinkedList(int data) {
+template<typename T>
+LinkedList<T>::LinkedList(T data) {
   this->head = new LinkedList::node();
   this->head->data = data;
   this->head->next = NULL;
 }
 
-bool LinkedList::isEmpty() {
+template<typename T>
+bool LinkedList<T>::isEmpty() {
   if (this->head != NULL)
     return false;
   return true;
 }
 
-int LinkedList::searchByValue(int value) {
+
+template<typename T>
+int LinkedList<T>::searchByValue(T value) {
   if (LinkedList::isEmpty())
     return -1;
   LinkedList::node *tmp = new LinkedList::node();
@@ -28,7 +33,8 @@ int LinkedList::searchByValue(int value) {
   return -1;
 }
 
-void LinkedList::addAtStart(int value) {
+template<typename T>
+void LinkedList<T>::addAtStart(T value) {
   LinkedList::node *newNode = new LinkedList::node();
   newNode->data = value;
   if (!LinkedList::isEmpty()) {
@@ -41,7 +47,9 @@ void LinkedList::addAtStart(int value) {
   this->head = newNode;
 }
 
-void LinkedList::deleteByIndex(int index) {
+
+template<typename T>
+void LinkedList<T>::deleteByIndex(T index) {
   if (LinkedList::isEmpty())
     return;
   LinkedList::node *tmp = new LinkedList::node();
@@ -65,9 +73,8 @@ void LinkedList::deleteByIndex(int index) {
   delete tmp2;
 }
 
-void LinkedList::printElements() {
-  if (LinkedList::isEmpty())
-    return;
+template<typename T>
+void LinkedList<T>::printElements() {
   std::cout << "BEGIN";
   for (LinkedList::node *tmp(this->head); tmp != NULL; tmp = tmp->next) {
     std::cout << "[" << tmp->data << "]";

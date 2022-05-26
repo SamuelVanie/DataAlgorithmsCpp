@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+LinkedList/.vimspector.json
+LinkedList/LinkedList

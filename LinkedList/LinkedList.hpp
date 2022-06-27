@@ -26,7 +26,7 @@ public:
    * */
 	int searchByValue(T value) {
 		if (isEmpty())
-		return -1;
+			return -1;
 		node *tmp = new node();
 		tmp = this->head;
 		for (int i = 0; tmp != NULL; tmp = tmp->next, i++) {
@@ -92,11 +92,12 @@ public:
 		std::cout << "END";
 	}
 
-	class node {
-		public:
-		T data;
-		node *next;
-	} * head;
+	private:
+		class node {
+			public:
+			T data;
+			node *next;
+		} * head;
 };
 
 #endif

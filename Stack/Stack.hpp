@@ -6,15 +6,28 @@
 template <typename T>
 class Stack {
 
-  private:
-    std::vector<T> stack;
+private:
+	std::vector<T> stack;
 
-  public:
-    Stack();
-    Stack(T data);
-    bool isEmpty();
+public:
+	Stack(T data){
+		this->stack.push_back(data);	
+	};
 
-    void pop();
-    void push(T data);
+	int size(){
+		return this->stack.size();
+	}
+
+	bool isEmpty(){
+		return this->stack.empty();			
+	}
+
+	void pop(){
+		this->stack.pop_back();
+	}
+
+	void push(T data){
+		this->stack.push_back(data);
+	}
 };
 #endif /* ifndef STACK */

@@ -4,12 +4,12 @@
 
 TEST(testLinkedListInit, initLinkedListEmptyConstructor){
 	LinkedList<int> list;
-	EXPECT_EQ(list.isEmpty(), true);
+	EXPECT_TRUE(list.isEmpty());
 }
 
 TEST(testLinkedListInit, initLinkedListFilledConstructor){
 	LinkedList<int> list(5);
-	EXPECT_EQ(list.isEmpty(), false);
+	EXPECT_FALSE(list.isEmpty());
 }
 
 TEST(testLinkedListSearch, shouldReturnNegativeIndexGivenAValueForAnEmptyLinkedList){

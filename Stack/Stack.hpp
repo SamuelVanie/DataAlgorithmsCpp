@@ -10,24 +10,30 @@ private:
 	std::vector<T> stack;
 
 public:
-	Stack(T data){
-		this->stack.push_back(data);	
-	};
 
-	int size(){
-		return this->stack.size();
-	}
+Stack(){
+  this->stack = new std::vector<T>();
+}
 
-	bool isEmpty(){
-		return this->stack.empty();			
-	}
+Stack(T data){
+  this->stack.push_back(data);
+}
 
-	void pop(){
-		this->stack.pop_back();
-	}
+bool isEmpty(){
+  return this->stack.empty();
+}
 
-	void push(T data){
-		this->stack.push_back(data);
-	}
+void pop(){
+  return this->stack.pop_back();
+}
+
+void push(T data){
+  this->stack.push_back(data);
+}
+
+int size(){
+	return this->stack.size();
+}
+
 };
 #endif /* ifndef STACK */

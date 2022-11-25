@@ -1,7 +1,7 @@
 #include <cstddef>
 #include <iostream>
+#include <gtest/gtest.h>
 #include "Stack.hpp"
-#include "gtest/gtest.h"
 
 TEST(testEmptyStack, isEmptyStackOnNonEmptyStack){
 	Stack<int> stack(5);

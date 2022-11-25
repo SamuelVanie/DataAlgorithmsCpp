@@ -1,0 +1,22 @@
+#+title: Readme
+
+
+* About this repository
+
+I just built this repository as a revision to my course in data algorithms
+
+
+* How to compile and execute the test
+
+To compile, you do it as a normal compilation but you will need to add *-lgtest* as a compilation flag
+
+The *google test* package need to be downloaded.
+
+
+Example of compilation :
+
+#+begin_example
+g++ Stack.hpp Stack_test.cpp -o Stack -lgtest
+#+end_example
+
+A binary called Stack will be generated.

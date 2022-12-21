@@ -36,6 +36,29 @@ TEST(testLinkedListAdd, shouldAddRemoveAtTheIndex){
 	EXPECT_EQ(-1, list.searchByValue(4));
 }
 
+TEST(testLinkedListReverseFunction, shouldReverseOneElementLinkedList){
+	LinkedList<int> list(6);
+	list.reverseLinkedList();
+
+	EXPECT_EQ(list.getHeadValue(), 6);
+}
+
+TEST(testLinkedListReverseFunction, shouldReverseLinkedList){
+	LinkedList<int> list(6);
+	list.addAtStart(7);
+	list.addAtStart(8);
+	list.reverseLinkedList();
+
+	EXPECT_EQ(list.getHeadValue(), 6);
+}
+
+TEST(testLinkedListReverseFunction, shouldReverseRecursivelyLinkedList){
+	LinkedList<int> list(6);
+	list.addAtStart(7);
+	list.addAtStart(9);
+	list.recursiveReverse(list.getHead());
+}
+
 int main(int argc, char* argv[]){
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

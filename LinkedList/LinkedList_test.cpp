@@ -1,5 +1,6 @@
 #include <iostream>
 #include "LinkedList.hpp"
+#include "LinkedList.cpp"
 #include "gtest/gtest.h"
 
 TEST(testLinkedListInit, initLinkedListEmptyConstructor){

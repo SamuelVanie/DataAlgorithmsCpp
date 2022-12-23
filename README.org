@@ -16,7 +16,15 @@ The *google test* package need to be downloaded.
 Example of compilation :
 
 #+begin_example
-g++ Stack.hpp Stack_test.cpp -o Stack -lgtest
+g++ Stack.cpp Stack_test.cpp -o Stack -lgtest
 #+end_example
 
 A binary called Stack will be generated.
+
+
+* Compilation using Makefile
+
+Compilation using makefile is pretty simple.
+You should be in the *root location* of the folder.
+
+Then you can run make with *Queue, LinkedList, ...* (whatever you want to compile)

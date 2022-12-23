@@ -2,6 +2,7 @@
 #include <iostream>
 #include <gtest/gtest.h>
 #include "Stack.hpp"
+#include "Stack.cpp"
 
 TEST(testEmptyStack, isEmptyStackOnNonEmptyStack){
 	Stack<int> stack(5);

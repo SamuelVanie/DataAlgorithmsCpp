@@ -1,4 +1,5 @@
 #include "LinkedList.hpp"
+#include <memory>
 
 template <class T>
 LinkedList<T>::LinkedList() : head { NULL } {};
@@ -6,7 +7,7 @@ LinkedList<T>::LinkedList() : head { NULL } {};
 
 template <class T>
 LinkedList<T>::LinkedList(T data) {
-    this->head = new node<T>(data);
+    this->head = std::make_shared<node<T>>(data);
 }
 
 
@@ -23,11 +24,10 @@ bool LinkedList<T>::isEmpty() const{
    * @return      : The index of the node, if not exists, returns -1
    * */
 template <class T>
-int LinkedList<T>::searchByValue(T value) {
+int LinkedList<T>::searchByValue(T value) const {
   if (isEmpty())
     return -1;
-  node<T> *tmp = new node<T>();
-  tmp = this->head;
+  std::shared_ptr<node<T>> tmp{this->head};
   for (int i = 0; tmp != NULL; tmp = tmp->next, i++) {
     if (tmp->data == value) {
       return i;
@@ -45,16 +45,15 @@ int LinkedList<T>::searchByValue(T value) {
 * */
 template <class T>
 void LinkedList<T>::addAtStart(T value) {
-  node<T> *newNode = new node<T>();
-  newNode->data = value;
+  std::shared_ptr<node<T>> newNode = std::make_shared<node<T>>(value);
   if (!isEmpty()) {
     // Stack isn't empty
     // Change to a new head
-    newNode->next = this->head;
-    this->head = newNode;
+    newNode->next = std::move(this->head);
+    this->head = std::move(newNode);
     return;
   }
-  this->head = newNode;
+  this->head = std::move(newNode);
 }
 
 
@@ -67,95 +66,32 @@ template <class T>
 void LinkedList<T>::deleteByIndex(T index) {
   if (isEmpty())
     return;
-  node<T> *tmp = new node<T>();
-  tmp = this->head;
+  std::shared_ptr<node<T>> tmp{this->head};
   if (index == 0) {
     // want to delete the head of the linked list
-    this->head = tmp->next;
-    delete tmp;
+    this->head = std::move(tmp->next);
     return;
   }
   int z = 0;
-  for (z = 0; z < index - 1 && tmp->next != NULL; tmp = tmp->next, ++z) {
-    // loop until we are on the previous node of the target
-  }
+  // loop until we are on the previous node of the target
+  for (z = 0; z < index - 1 && tmp->next != NULL; tmp = tmp->next, ++z) {}
   if (tmp == NULL || z != index - 1)
     return;
   // save the target to be able to delete it
-  node<T> *tmp2 = new node<T>();
-  tmp2 = tmp->next;
-  tmp->next = tmp->next->next;
-  delete tmp2;
-}
-
-
-  /**
-   * Insert a node at a given position */
-template <class T>
-void LinkedList<T>::insertAtPosition(int position, T data) {
-  node<T> *new_el = new node<T>();
-  new_el->data = data;
-  new_el->next = NULL;
-
-  if (position == 0) {
-    new_el->next = this->head;
-    this->head = new_el;
-    return;
-  }
-
-  node<T> *temp = head;
-  for (int i = 0; i < position - 1; i++)
-    temp = temp->next;
-
-  new_el->next = temp->next;
-  temp->next = new_el;
+  std::shared_ptr<node<T>> tmp2{tmp->next};
+  tmp->next = std::move(tmp->next->next);
 }
 
 
   /**
    * Print the elements of the linked list */
 template <class T>
-void LinkedList<T>::printElements() {
+void LinkedList<T>::printElements() const {
   std::cout << "BEGIN";
-  for (node<T> *tmp(this->head); tmp != NULL; tmp = tmp->next) {
+  for (std::shared_ptr<node<T>> tmp(this->head); tmp != NULL; tmp = tmp->next) {
     std::cout << "[" << tmp->data << "]";
   }
   std::cout << "END";
-}
-
-
-  /**
-   * LinkedList reversing */
-template <class T>
-void LinkedList<T>::reverseLinkedList() {
-  node<T> *current = head;
-  node<T> *prev = NULL;
-  node<T> *suiv = head;
-
-  while (current != NULL) {
-    suiv = suiv->next;
-    current->next = prev;
-    prev = current;
-    current = suiv;
-  }
-
-  this->head = prev;
-}
-
-
-
-  /**
-   * Linkedlist reverse using recursion */
-template <class T>
-void LinkedList<T>::recursiveReverse(node<T> *first) {
-  if (first->next == NULL) {
-    this->head = first;
-    return;
-  }
-  recursiveReverse(first->next);
-  node<T> *p = first->next;
-  p->next = first;
-  first->next = NULL;
 }
 
 
@@ -163,15 +99,9 @@ void LinkedList<T>::recursiveReverse(node<T> *first) {
 /**
  * Return the value of the head element of the list */
 template <class T>
-T LinkedList<T>::getHeadValue() {
+T LinkedList<T>::getHeadValue() const {
   if (!this->isEmpty()) {
     return this->head->data;
   }
   return INT32_MIN;
-}
-
-
-template <class T>
-typename LinkedList<T>::template node<T>* LinkedList<T>::getHead() const{
-  return this->head;
 }

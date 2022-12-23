@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <iostream>
+#include <memory>
 
 
 template <class T> class LinkedList {
@@ -12,31 +13,28 @@ private:
     public:
       node() : data{}, next{ NULL } {}
       node(int d) : data{ d }, next{ NULL } {}
+      ~node(){
+        std::cout << "A node was deleted" << std::endl;
+      }
 
       Q data;
-      node *next;
+      std::shared_ptr<node<T>> next;
   };
 
-	node<T> *head;
+  std::shared_ptr<node<T>> head;
 
 public:
 
   LinkedList();
   LinkedList(T data);
 
-  ~LinkedList(){}
-
 
   bool isEmpty() const;
-  int searchByValue(T value);
+  int searchByValue(T value) const;
   void addAtStart(T value);
   void deleteByIndex(T index);
-  void insertAtPosition(int position, T data);
-  void printElements();
-  void reverseLinkedList();
-  void recursiveReverse(node <T> *first);
-  T getHeadValue();
-  node<T>* getHead() const;
+  void printElements() const;
+  T getHeadValue() const;
 
 
 };

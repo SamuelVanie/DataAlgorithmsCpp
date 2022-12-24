@@ -28,6 +28,7 @@ Compilation using makefile is pretty simple.
 You should be in the *root location* of the folder.
 
 Then you can run make with *Queue, LinkedList, ...* (whatever you want to compile)
+
 Example : Compile and run Heap tests
 #+begin_example
 make Heap

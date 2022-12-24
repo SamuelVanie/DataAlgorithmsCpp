@@ -15,6 +15,9 @@ stack_dir := $(cur-dir)$(stack_root)
 queue_root := /Queue
 queue_dir := $(cur-dir)$(queue_root)
 
+heap_root := /Heap
+heap_dir := $(cur-dir)$(heap_root)
+
 
 buildLinkedList: ${linkedlist_dir}/LinkedList_test.cpp ${linkedlist_dir}/LinkedList.hpp
 	g++ ${linkedlist_dir}/LinkedList.cpp ${linkedlist_dir}/LinkedList_test.cpp -o ${linkedlist_dir}/LinkedList -g -lgtest
@@ -37,6 +40,14 @@ buildQueue: ${queue_dir}/Queue.cpp ${queue_dir}/Queue.hpp ${queue_dir}/Queue_tes
 
 Queue: buildQueue
 	${queue_dir}/Queue
+
+
+buildHeap: ${heap_dir}/Heap.cpp ${heap_dir}/Heap.hpp ${heap_dir}/Heap_test.cpp
+	g++ ${heap_dir}/Heap.cpp ${heap_dir}/Heap_test.cpp -o ${heap_dir}/Heap -g -lgtest
+
+Heap: buildHeap
+	${heap_dir}/Heap
+
 
 
 clean:

@@ -39,3 +39,7 @@ with the different data structures because they each them contains reference to 
 
 - The solution to this behavior is to change ownership of all the pointers to a unique one that will be deallocated at the end
 of the scope of the destructor function.
+Example : Compile and run Heap tests
+#+begin_example
+make Heap
+#+end_example

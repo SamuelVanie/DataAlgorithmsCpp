@@ -28,3 +28,14 @@ Compilation using makefile is pretty simple.
 You should be in the *root location* of the folder.
 
 Then you can run make with *Queue, LinkedList, ...* (whatever you want to compile)
+
+
+* Explanation of smart pointers auto deallocation functions
+
+- Smart pointers are supposed to be deallocated automatically but the size of the stack provoke deallocation issues
+with the different data structures because they each them contains reference to an other (the next one).
+
+- You can confirm this behavior by running insertion of multiple data and delete the destructors that I have created.
+
+- The solution to this behavior is to change ownership of all the pointers to a unique one that will be deallocated at the end
+of the scope of the destructor function.

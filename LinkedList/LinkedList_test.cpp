@@ -30,9 +30,9 @@ TEST(testLinkedListAdd, shouldAddToTheBeginningOfList){
 }
 
 TEST(testLinkedListAdd, shouldAddRemoveAtTheIndex){
-	LinkedList<int> list(5);
-	list.addAtStart(4);
-	list.addAtStart(6);
+	LinkedList<int> list;
+  list.addAtStart(4);
+  list.addAtStart(6);
 	list.deleteByIndex(1);
 	EXPECT_EQ(-1, list.searchByValue(4));
 }

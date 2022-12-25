@@ -13,9 +13,7 @@ private:
     public:
       node() : data{}, next{ NULL } {}
       node(int d) : data{ d }, next{ NULL } {}
-      ~node(){
-        std::cout << "A node was deleted" << std::endl;
-      }
+      ~node() = default;
 
       Q data;
       std::shared_ptr<node<T>> next;
@@ -23,11 +21,13 @@ private:
 
   std::shared_ptr<node<T>> head;
 
+  void clean();
+
 public:
 
   LinkedList();
   LinkedList(T data);
-
+  ~LinkedList();
 
   bool isEmpty() const;
   int searchByValue(T value) const;

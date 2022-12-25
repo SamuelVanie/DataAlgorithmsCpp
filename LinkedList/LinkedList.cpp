@@ -10,6 +10,18 @@ LinkedList<T>::LinkedList(T data) {
     this->head = std::make_shared<node<T>>(data);
 }
 
+template <class T>
+void LinkedList<T>::clean() {
+  while( this->head ){
+    this->head = std::move(this->head->next);
+  }
+}
+
+template <class T>
+LinkedList<T>::~LinkedList() {
+  this->clean();
+}
+
 
 template <class T>
 bool LinkedList<T>::isEmpty() const{

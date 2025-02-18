@@ -32,4 +32,5 @@
 *.app
 
 LinkedList/.vimspector.json
-LinkedList/LinkedList
+*~
+*.class

@@ -53,3 +53,21 @@ of the scope of the destructor function.
 
 The best language for the market, but I don't like this language.
 Still best to practice in the language in which you're gonna be interviewed.
+
+
+** Compilation/run using javac and java
+
+1. To compile the project run the following command :
+
+   #+begin_src java
+javac File.java
+   #+end_src
+
+   Because the dependencies JUnit and hamcrest are already in the classpath (see the flake.nix file), you can easily compile with the above command.
+   You would use the =-cp= flag is those were not.
+
+2. Run the project with the command :
+
+   #+begin_src java
+java org.junit.runner.JUnitCore TestFilePathWithoutTheClassExtension
+   #+end_src

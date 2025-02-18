@@ -7,9 +7,8 @@
     in {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
-          gdb
-          gcc
-          gtest
+          jdt-language-server
+          jdk
         ];
       };
     });

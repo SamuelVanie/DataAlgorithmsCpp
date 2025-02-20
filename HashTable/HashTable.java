@@ -16,10 +16,10 @@ public class HashTable {
         return key.length() % this.hashSize;
     }
 
-    public void insert(String key) {
+    public void insert(String key, int value) {
         int theKey = hash(key);
         List<HashElement> el = this.content[theKey];
-        el.insert(new HashElement(
+        el.insert(new HashElement(key, value));
     }
 
 

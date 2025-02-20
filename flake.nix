@@ -17,9 +17,14 @@
         packages = with pkgs; [
           jdt-language-server
           jdk
+          emacsPackages.lsp-java
         ];
+        # Add to emacs load path with
+        # (use-package lsp-java :ensure nil :config (add-hook 'java-mode-hook 'lsp))
+        # (smv/add-nix-pkg-to-lpath "EMACSPKGS_LSPJAVA")
         shellHook = ''
           export CLASSPATH="${junitJar}:${hamcrestJar}:$CLASSPATH"
+          export EMACSPKGS_LSPJAVA="${pkgs.emacsPackages.lsp-java}"
         '';
       };
     });
